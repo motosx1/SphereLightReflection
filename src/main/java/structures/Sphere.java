@@ -2,15 +2,19 @@ package structures;
 
 import algorithms.DisplayAlgorithms;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sphere {
 
+    @XmlElement
     private InitialSphereData initialData;
     private static final int INITIAL_VIEWER_DISTANCE = 600;
     private List<Point3D> points3D = null;
     private List<ColorPoint2D> points2D = null;
+    @XmlElement
     private LightParams lightParams = null;
 
 

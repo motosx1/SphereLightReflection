@@ -3,10 +3,15 @@ package structures;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import javax.xml.bind.annotation.XmlElement;
+
 @EqualsAndHashCode(callSuper = false)
 public class Point3D extends Point2D {
-    @Getter
-    private final double z;
+    @XmlElement @Getter
+    private double z;
+
+    public Point3D() {
+    }
 
     public Point3D(double x, double y, double z) {
         super(x, y);

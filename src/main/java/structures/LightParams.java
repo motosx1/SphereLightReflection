@@ -1,9 +1,20 @@
 package structures;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+import javax.xml.bind.annotation.XmlElement;
+
 public class LightParams {
-    private final Point3D lightPosition;
-    private final double someParam;
+    @XmlElement @Getter
+    private Point3D lightPosition;
+    @XmlElement @Getter
+    private double someParam;
+
+    public LightParams() {
+    }
+
+    public LightParams(Point3D lightPosition, double someParam) {
+        this.lightPosition = lightPosition;
+        this.someParam = someParam;
+    }
 }

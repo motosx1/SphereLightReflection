@@ -1,9 +1,20 @@
 package structures;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+import javax.xml.bind.annotation.XmlElement;
+
 public class InitialSphereData {
-    private final Point3D centerPoint;
-    private final int radius;
+    @XmlElement @Getter
+    private Point3D centerPoint;
+    @XmlElement @Getter
+    private int radius;
+
+    public InitialSphereData() {
+    }
+
+    public InitialSphereData(Point3D centerPoint, int radius) {
+        this.centerPoint = centerPoint;
+        this.radius = radius;
+    }
 }

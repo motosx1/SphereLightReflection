@@ -1,11 +1,21 @@
 package structures;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
-@Data @EqualsAndHashCode
+import javax.xml.bind.annotation.XmlElement;
+
 public class Point2D {
-    private final double x;
-    private final double y;
+    @XmlElement @Getter
+    private double x;
+    @XmlElement @Getter
+    private double y;
 
+    public Point2D() {
+    }
+
+    public Point2D(double x, double y){
+        this.x = x;
+        this.y = y;
+
+    }
 }

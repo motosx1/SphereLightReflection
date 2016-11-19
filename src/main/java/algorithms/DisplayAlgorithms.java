@@ -86,7 +86,7 @@ public class DisplayAlgorithms {
         ReflectionPoint3D reflectionMax = Collections.max(reflectionStrengths, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
         ReflectionPoint3D reflectionMin = Collections.min(reflectionStrengths, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
 
-        System.out.println("reflectionMax: " + reflectionMax);
+//        System.out.println("reflectionMax: " + reflectionMax);
 
         double translationToZero = -reflectionMin.getReflectionStrength();
 //        double range = 16 - reflectionMin.getReflectionStrength();
