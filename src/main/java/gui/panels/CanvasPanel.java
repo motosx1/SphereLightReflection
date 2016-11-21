@@ -33,6 +33,12 @@ public class CanvasPanel extends JPanel {
             g2.fillOval((int) point.getPoint2D().getX(), (int) point.getPoint2D().getY(), 2, 2);
         }
 
+        int x = (int) -MainFrame.getCanvasPanelSize().getWidth() / 2 + 20;
+        g2.drawString("id: "+sphere.getId(), x, -12);
+        g2.drawString("n: "+sphere.getLightParams().getN(), x, 0);
+        g2.drawString("ks: "+sphere.getLightParams().getKs(), x, 12);
+        g2.drawString("kd: "+sphere.getLightParams().getKd(), x, 24);
+
     }
 
     private void setCanvasCenter(Graphics2D g2) {

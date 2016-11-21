@@ -79,18 +79,18 @@ public class DisplayAlgorithms {
                 angle = -angle;
             }
 
-            double lightStrength = (0.0001 * 1 * dotProduct(lVec, nVec) + 10 * Math.pow(Math.cos(angle),10));
+            double lightStrength = (0.001 * lightParams.getKs() * dotProduct(lVec, nVec) + 100 * lightParams.getKd() * Math.pow(Math.cos(angle),lightParams.getN()));
             reflectionStrengths.add(new ReflectionPoint3D(spherePixel, lightStrength));
         }
 
         ReflectionPoint3D reflectionMax = Collections.max(reflectionStrengths, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
         ReflectionPoint3D reflectionMin = Collections.min(reflectionStrengths, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
 
-//        System.out.println("reflectionMax: " + reflectionMax);
+        System.out.println("reflectionMax: " + reflectionMax);
 
         double translationToZero = -reflectionMin.getReflectionStrength();
-//        double range = 16 - reflectionMin.getReflectionStrength();
-        double range = reflectionMax.getReflectionStrength() - reflectionMin.getReflectionStrength();
+        double range = 105 - reflectionMin.getReflectionStrength() >= 0 ? 105 - reflectionMin.getReflectionStrength() : 0;
+//        double range = reflectionMax.getReflectionStrength() - reflectionMin.getReflectionStrength();
 
         for (ReflectionPoint3D reflectionStrength : reflectionStrengths) {
             int c = (int)((reflectionStrength.getReflectionStrength() + translationToZero) / (range / 255));
@@ -101,7 +101,7 @@ public class DisplayAlgorithms {
             if( c > 255 ){
                 c = 255;
             }
-            colorPoints2D.add(new ColorPoint2D(transformPointTo2D(reflectionStrength.getPoint3D(), 600), new Color(c,c,c)));
+            colorPoints2D.add(new ColorPoint2D(transformPointTo2D(reflectionStrength.getPoint3D(), 100), new Color(c,c,c)));
         }
 
         return colorPoints2D;

@@ -8,13 +8,17 @@ public class LightParams {
     @XmlElement @Getter
     private Point3D lightPosition;
     @XmlElement @Getter
-    private double someParam;
+    private double ks;
+    @XmlElement @Getter
+    private double kd;
+    @XmlElement @Getter
+    private double n;
 
     public LightParams() {
     }
 
-    public LightParams(Point3D lightPosition, double someParam) {
+    public LightParams(Point3D lightPosition, double ks) {
         this.lightPosition = lightPosition;
-        this.someParam = someParam;
+        this.ks = ks;
     }
 }

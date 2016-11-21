@@ -1,20 +1,21 @@
 package structures;
 
 import algorithms.DisplayAlgorithms;
+import lombok.Getter;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sphere {
 
+    @Getter @XmlElement
+    private double id;
     @XmlElement
     private InitialSphereData initialData;
-    private static final int INITIAL_VIEWER_DISTANCE = 600;
     private List<Point3D> points3D = null;
     private List<ColorPoint2D> points2D = null;
-    @XmlElement
+    @XmlElement @Getter
     private LightParams lightParams = null;
 
 
@@ -38,12 +39,12 @@ public class Sphere {
             double zCenter = initialData.getCenterPoint().getZ();
 
             double step = 0.1;
-            for (double x = -radius; x <= radius; x += step) {
-                for (double y = -radius; y <= radius; y += step) {
+            for (double x = -radius-2; x <= radius+2; x += step) {
+                for (double y = -radius-2; y <= radius+2; y += step) {
                     for (double z = -radius; z <= 0; z += step) {
                         double pointDistance = (x * x) + (y * y) + (z * z);
 
-                        if (Math.abs(pointDistance - (radius * radius)) <= 5) {
+                        if (Math.abs(pointDistance - (radius * radius)) <= 6) {
 
                             localPoints3D.add(new Point3D(x + xCenter, y + yCenter, z + zCenter));
                         }

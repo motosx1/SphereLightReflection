@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <spheres>
     <sphere>
+        <id>1</id>
         <initialData>
             <centerPoint>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>-200.0</z>
+                <x>-5.0</x>
+                <y>-5.0</y>
+                <z>-10</z>
             </centerPoint>
-            <radius>50</radius>
+            <radius>10</radius>
         </initialData>
         <lightParams>
             <lightPosition>
-                <x>30.0</x>
+                <x>-30.0</x>
                 <y>-20.0</y>
-                <z>-400.0</z>
-            </lightPosition>
-            <someParam>0.7</someParam>
-        </lightParams>
-    </sphere>
-    <sphere>
-        <initialData>
-            <centerPoint>
-                <x>-80.0</x>
-                <y>0.0</y>
                 <z>-200.0</z>
-            </centerPoint>
-            <radius>50</radius>
-        </initialData>
-        <lightParams>
-            <lightPosition>
-                <x>30.0</x>
-                <y>-20.0</y>
-                <z>-400.0</z>
             </lightPosition>
-            <someParam>0.7</someParam>
+            <kd>0.75</kd>
+            <ks>0.25</ks>
+            <n>10</n>
         </lightParams>
     </sphere>
+
 </spheres>

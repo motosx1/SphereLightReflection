@@ -7,9 +7,8 @@ import java.awt.*;
 
 public class MainFrame extends JFrame{
 
-    public static final int FRAME_WIDTH = 1200;
-    public static final int FRAME_HEIGHT = 800;
-    public static final int BUTTONS_PANEL_WIDTH = 150;
+    public static final int FRAME_WIDTH = 600;
+    public static final int FRAME_HEIGHT = 600;
     private final Sphere sphere;
 
     CanvasPanel canvas = null;
@@ -22,20 +21,12 @@ public class MainFrame extends JFrame{
 
         setUpFrame();
         addCanvas();
-        addButtonsPanel();
 
         pack();
         setVisible(true);
     }
 
-    private void addButtonsPanel() {
-        JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setPreferredSize(new Dimension(BUTTONS_PANEL_WIDTH, (int)buttonsPanel.getPreferredSize().getHeight()));
-        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.PAGE_AXIS));
 
-//        addButtons(buttonsPanel);
-        add(buttonsPanel, BorderLayout.EAST);
-    }
 
     private void addCanvas() {
         add(canvas,BorderLayout.CENTER);
@@ -61,7 +52,7 @@ public class MainFrame extends JFrame{
 //    }
 
     public static Dimension getCanvasPanelSize(){
-        return new Dimension(FRAME_WIDTH-BUTTONS_PANEL_WIDTH, FRAME_HEIGHT);
+        return new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
     }
 
 //    private void setKeyListener() {
