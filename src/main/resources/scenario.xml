@@ -14,11 +14,54 @@
             <lightPosition>
                 <x>-30.0</x>
                 <y>-20.0</y>
-                <z>-200.0</z>
+                <z>-300.0</z>
             </lightPosition>
-            <kd>0.75</kd>
-            <ks>0.25</ks>
-            <n>10</n>
+            <kd>0.85</kd>
+            <ks>0.15</ks>
+            <n>5</n>
+        </lightParams>
+    </sphere>
+
+    <sphere>
+        <id>2</id>
+        <initialData>
+            <centerPoint>
+                <x>-5.0</x>
+                <y>-5.0</y>
+                <z>-10</z>
+            </centerPoint>
+            <radius>10</radius>
+        </initialData>
+        <lightParams>
+            <lightPosition>
+                <x>-30.0</x>
+                <y>-20.0</y>
+                <z>-300.0</z>
+            </lightPosition>
+            <kd>0.5</kd>
+            <ks>0.5</ks>
+            <n>5</n>
+        </lightParams>
+    </sphere>
+    <sphere>
+        <id>3</id>
+        <initialData>
+            <centerPoint>
+                <x>-5.0</x>
+                <y>-5.0</y>
+                <z>-10</z>
+            </centerPoint>
+            <radius>10</radius>
+        </initialData>
+        <lightParams>
+            <lightPosition>
+                <x>-30.0</x>
+                <y>-20.0</y>
+                <z>-300.0</z>
+            </lightPosition>
+            <kd>0.25</kd>
+            <ks>0.75</ks>
+            <n>5</n>
         </lightParams>
     </sphere>
 
