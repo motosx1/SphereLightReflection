@@ -66,7 +66,7 @@ public class DisplayAlgorithms {
     public static List<ColorPoint2D> getScaledReflectionStrengths(List<Point3D> spherePixels, LightParams lightParams) {
         int maxReflection = 105;
 
-        java.util.List<ReflectionPoint3D> reflectionStrengths = new ArrayList<>();
+        java.util.List<ReflectionPoint3D> reflections = new ArrayList<>();
         java.util.List<ColorPoint2D> colorPoints2D = new ArrayList<>();
 
         for (Point3D spherePixel : spherePixels) {
@@ -82,28 +82,28 @@ public class DisplayAlgorithms {
             }
 
             double lightStrength = (0.001 * lightParams.getKs() * dotProduct(lVec, nVec) + 130 * lightParams.getKd() * Math.pow(Math.cos(angle),lightParams.getN()));
-            reflectionStrengths.add(new ReflectionPoint3D(spherePixel, lightStrength));
+            reflections.add(new ReflectionPoint3D(spherePixel, lightStrength));
         }
 
-        ReflectionPoint3D reflectionMax = Collections.max(reflectionStrengths, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
-        ReflectionPoint3D reflectionMin = Collections.min(reflectionStrengths, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
+        ReflectionPoint3D reflectionMax = Collections.max(reflections, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
+        ReflectionPoint3D reflectionMin = Collections.min(reflections, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
 
 //        System.out.println("reflectionMin: " + reflectionMin);
         System.out.println("reflectionMax: " + reflectionMax);
 
-        double translationToZero = -reflectionMin.getReflectionStrength();
+        double reflectionRangeStart = -reflectionMin.getReflectionStrength();
         double range = maxReflection - reflectionMin.getReflectionStrength() >= 0 ? maxReflection - reflectionMin.getReflectionStrength() : 0;
 
-        for (ReflectionPoint3D reflectionStrength : reflectionStrengths) {
-            int c = (int)((reflectionStrength.getReflectionStrength() + translationToZero) / (range / 255));
+        for (ReflectionPoint3D reflection : reflections) {
+            int color = (int)((reflection.getReflectionStrength() + reflectionRangeStart) / (range / 255));
 
-            if( c < 0 ){
-                c = 0;
+            if( color < 0 ){
+                color = 0;
             }
-            if( c > 255 ){
-                c = 255;
+            if( color > 255 ){
+                color = 255;
             }
-            colorPoints2D.add(new ColorPoint2D(transformPointTo2D(reflectionStrength.getPoint3D(), 100), new Color(c,c,c)));
+            colorPoints2D.add(new ColorPoint2D(transformPointTo2D(reflection.getPoint3D(), 100), new Color(color,color,color)));
         }
 
         return colorPoints2D;
