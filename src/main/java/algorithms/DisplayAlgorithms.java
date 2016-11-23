@@ -63,8 +63,14 @@ public class DisplayAlgorithms {
     }
 
 
-    public static List<ColorPoint2D> getScaledReflectionStrengths(List<Point3D> spherePixels, LightParams lightParams) {
-        int maxReflection = 105;
+    public static List<ColorPoint2D> getScaledReflectionStrengths(Sphere sphere, LightParams lightParams) {
+        List<Point3D> spherePixels = sphere.getPoints3D();
+        int colorR = sphere.getInitialData().getColorR();
+        int colorG = sphere.getInitialData().getColorG();
+        int colorB = sphere.getInitialData().getColorB();
+
+        int maxReflection = 40;
+        int minReflection = 0;
 
         java.util.List<ReflectionPoint3D> reflections = new ArrayList<>();
         java.util.List<ColorPoint2D> colorPoints2D = new ArrayList<>();
@@ -77,11 +83,13 @@ public class DisplayAlgorithms {
 
             double angle = Math.acos(dotProduct(nVec.normalize(), lVec.normalize()));
             Vector3D cross = crossProduct(nVec, lVec);
-            if (dotProduct(lVec, cross) < 0) { // Or > 0
+            if (dotProduct(lVec, cross) < 0) {
                 angle = -angle;
             }
-
-            double lightStrength = (0.001 * lightParams.getKs() * dotProduct(lVec, nVec) + 130 * lightParams.getKd() * Math.pow(Math.cos(angle),lightParams.getN()));
+//ks = 480
+            // 0.0001  *
+            //280 *
+            double lightStrength = ( 0.01 * lightParams.getKs() * dotProduct(lVec, nVec) + 60 * lightParams.getKd() * Math.pow(Math.cos(angle),lightParams.getN()));
             reflections.add(new ReflectionPoint3D(spherePixel, lightStrength));
         }
 
@@ -92,7 +100,7 @@ public class DisplayAlgorithms {
         System.out.println("reflectionMax: " + reflectionMax);
 
         double reflectionRangeStart = -reflectionMin.getReflectionStrength();
-        double range = maxReflection - reflectionMin.getReflectionStrength() >= 0 ? maxReflection - reflectionMin.getReflectionStrength() : 0;
+        double range = maxReflection - minReflection;
 
         for (ReflectionPoint3D reflection : reflections) {
             int color = (int)((reflection.getReflectionStrength() + reflectionRangeStart) / (range / 255));
@@ -103,10 +111,30 @@ public class DisplayAlgorithms {
             if( color > 255 ){
                 color = 255;
             }
-            colorPoints2D.add(new ColorPoint2D(transformPointTo2D(reflection.getPoint3D(), 100), new Color(color,color,color)));
+
+
+
+            Color sphereColor = new Color(
+                    Math.max(scale(color, 255, colorR, 255, 0),0),
+                    Math.max(scale(color, 255, colorG, 255, 0),0),
+                    Math.max(scale(color, 255, colorB, 255, 0),0));
+
+//            Color sphereColor = new Color(
+//                    Math.min(scale(color, 255, 0, 255, colorR),255),
+//                    Math.min(scale(color, 255, 0, 255, colorR),255),
+//                    Math.min(scale(color, 255, 0, 255, colorR),255));
+
+
+//            Color sphereColor = new Color(Math.min(colorR + color*255/(255-colorR),255), Math.min(colorG + color*255/(255-colorG),255), Math.min(colorB + color*255/(255-colorB),255));
+            colorPoints2D.add(new ColorPoint2D(transformPointTo2D(reflection.getPoint3D(), 100), sphereColor));
         }
 
         return colorPoints2D;
     }
+
+    private static int scale(double x,double max,double min,double largest,double smallest){
+      return (int)(min + (max-min)/(largest-smallest)*(x-smallest));
+    }
+
 
 }

@@ -9,6 +9,9 @@
                 <z>-10</z>
             </centerPoint>
             <radius>10</radius>
+            <colorR>255</colorR>
+            <colorG>1</colorG>
+            <colorB>1</colorB>
         </initialData>
         <lightParams>
             <lightPosition>
@@ -16,14 +19,13 @@
                 <y>-20.0</y>
                 <z>-300.0</z>
             </lightPosition>
-            <kd>0.85</kd>
-            <ks>0.15</ks>
-            <n>5</n>
+            <kd>1</kd>
+            <ks>0</ks>
+            <n>1</n>
         </lightParams>
     </sphere>
-
     <sphere>
-        <id>2</id>
+        <id>1</id>
         <initialData>
             <centerPoint>
                 <x>-5.0</x>
@@ -31,6 +33,9 @@
                 <z>-10</z>
             </centerPoint>
             <radius>10</radius>
+            <colorR>1</colorR>
+            <colorG>255</colorG>
+            <colorB>1</colorB>
         </initialData>
         <lightParams>
             <lightPosition>
@@ -40,7 +45,31 @@
             </lightPosition>
             <kd>0.5</kd>
             <ks>0.5</ks>
-            <n>5</n>
+            <n>10</n>
+        </lightParams>
+    </sphere>
+    <sphere>
+        <id>2</id>
+        <initialData>
+            <centerPoint>
+                <x>-5.0</x>
+                <y>-5.0</y>
+                <z>-10</z>
+            </centerPoint>
+            <radius>10</radius>
+            <colorR>128</colorR>
+            <colorG>128</colorG>
+            <colorB>128</colorB>
+        </initialData>
+        <lightParams>
+            <lightPosition>
+                <x>-30.0</x>
+                <y>-20.0</y>
+                <z>-300.0</z>
+            </lightPosition>
+            <kd>0.25</kd>
+            <ks>1.75</ks>
+            <n>450</n>
         </lightParams>
     </sphere>
     <sphere>
@@ -52,6 +81,9 @@
                 <z>-10</z>
             </centerPoint>
             <radius>10</radius>
+            <colorR>222</colorR>
+            <colorG>184</colorG>
+            <colorB>135</colorB>
         </initialData>
         <lightParams>
             <lightPosition>
@@ -59,9 +91,9 @@
                 <y>-20.0</y>
                 <z>-300.0</z>
             </lightPosition>
-            <kd>0.25</kd>
-            <ks>0.75</ks>
-            <n>5</n>
+            <kd>0.85</kd>
+            <ks>0.15</ks>
+            <n>1</n>
         </lightParams>
     </sphere>
 

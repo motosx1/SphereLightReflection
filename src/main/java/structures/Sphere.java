@@ -11,7 +11,7 @@ public class Sphere {
 
     @Getter @XmlElement
     private double id;
-    @XmlElement
+    @XmlElement @Getter
     private InitialSphereData initialData;
     private List<Point3D> points3D = null;
     private List<ColorPoint2D> points2D = null;
@@ -61,7 +61,7 @@ public class Sphere {
 
     public List<ColorPoint2D> getPoints2D() {
         if (points2D == null) {
-            points2D = DisplayAlgorithms.getScaledReflectionStrengths(getPoints3D(), lightParams);
+            points2D = DisplayAlgorithms.getScaledReflectionStrengths(this, lightParams);
         }
 
         return points2D;

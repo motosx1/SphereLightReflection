@@ -9,6 +9,12 @@ public class InitialSphereData {
     private Point3D centerPoint;
     @XmlElement @Getter
     private int radius;
+    @XmlElement @Getter
+    private int colorR;
+    @XmlElement @Getter
+    private int colorG;
+    @XmlElement @Getter
+    private int colorB;
 
     public InitialSphereData() {
     }
