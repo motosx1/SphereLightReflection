@@ -10,7 +10,7 @@ import java.util.List;
 public class Sphere {
 
     @Getter @XmlElement
-    private double id;
+    private String id;
     @XmlElement @Getter
     private InitialSphereData initialData;
     private List<Point3D> points3D = null;

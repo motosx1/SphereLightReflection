@@ -34,6 +34,7 @@ public class CanvasPanel extends JPanel {
         }
 
         int x = (int) -MainFrame.getCanvasPanelSize().getWidth() / 2 + 20;
+        g2.setColor(Color.BLACK);
         g2.drawString("id: "+sphere.getId(), x, -12);
         g2.drawString("n: "+sphere.getLightParams().getN(), x, 0);
         g2.drawString("kd: "+sphere.getLightParams().getKd(), x, 12);

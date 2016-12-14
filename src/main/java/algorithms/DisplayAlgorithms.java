@@ -86,9 +86,6 @@ public class DisplayAlgorithms {
             if (dotProduct(lVec, cross) < 0) {
                 angle = -angle;
             }
-//ks = 480
-            // 0.0001  *
-            //280 *
             double lightStrength = ( 0.01 * lightParams.getKs() * dotProduct(lVec, nVec) + 60 * lightParams.getKd() * Math.pow(Math.cos(angle),lightParams.getN()));
             reflections.add(new ReflectionPoint3D(spherePixel, lightStrength));
         }
@@ -96,7 +93,6 @@ public class DisplayAlgorithms {
         ReflectionPoint3D reflectionMax = Collections.max(reflections, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
         ReflectionPoint3D reflectionMin = Collections.min(reflections, (p1, p2) -> (int) (p1.getReflectionStrength() - p2.getReflectionStrength()));
 
-//        System.out.println("reflectionMin: " + reflectionMin);
         System.out.println("reflectionMax: " + reflectionMax);
 
         double reflectionRangeStart = -reflectionMin.getReflectionStrength();
@@ -112,20 +108,11 @@ public class DisplayAlgorithms {
                 color = 255;
             }
 
-
-
             Color sphereColor = new Color(
                     Math.max(scale(color, 255, colorR, 255, 0),0),
                     Math.max(scale(color, 255, colorG, 255, 0),0),
                     Math.max(scale(color, 255, colorB, 255, 0),0));
 
-//            Color sphereColor = new Color(
-//                    Math.min(scale(color, 255, 0, 255, colorR),255),
-//                    Math.min(scale(color, 255, 0, 255, colorR),255),
-//                    Math.min(scale(color, 255, 0, 255, colorR),255));
-
-
-//            Color sphereColor = new Color(Math.min(colorR + color*255/(255-colorR),255), Math.min(colorG + color*255/(255-colorG),255), Math.min(colorB + color*255/(255-colorB),255));
             colorPoints2D.add(new ColorPoint2D(transformPointTo2D(reflection.getPoint3D(), 100), sphereColor));
         }
 
